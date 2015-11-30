@@ -30,5 +30,7 @@ bool PlayScene::init()
     mPipeSprite1 = PipeSprite::create();
     this->getRootLayer()->addChild(mPipeSprite1);
     /*******************pipe initialization*************************/
+    
+    ((PipeSprite *)mPipeSprite1)->startMovement(0);
     return true;
 }

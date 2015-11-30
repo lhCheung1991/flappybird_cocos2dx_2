@@ -78,6 +78,7 @@ void PipeSprite::configPipeRandom()
                                                               visiableSize.height - mUpperPipe->getPosition().y));
     newUpperPipeBody->setPositionOffset(Vec2(0, (visiableSize.height - mUpperPipe->getPosition().y - mUpperPipe->getContentSize().height) / 2));
     newUpperPipeBody->setGravityEnable(false);
+    newUpperPipeBody->setDynamic(false);
     mUpperPipe->setPhysicsBody(newUpperPipeBody);
     /****************add upper physics body*******************/
     
@@ -90,11 +91,15 @@ void PipeSprite::configPipeRandom()
                                                                   mBottomPipe->getPosition().y - mLandHeight + mBottomPipe->getContentSize().height));
     newBottomPipeBody->setPositionOffset(Vec2(0, -(mBottomPipe->getPosition().y - mLandHeight) / 2));
     newBottomPipeBody->setGravityEnable(false);
+    newBottomPipeBody->setDynamic(false);
     mBottomPipe->setPhysicsBody(newBottomPipeBody);
     /****************add bottom physics body*******************/
 }
 
 void PipeSprite::startMovement(int startX)
 {
-//    MoveTo * pipeMove = MoveTo::create(, );
+    Size visiableSize = Director::getInstance()->getVisibleSize();
+    mUpperPipe->setPosition(visiableSize.width, mUpperPipe->getPosition().y);
+    MoveTo * upperPipeMove = MoveTo::create(4, Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
+    mUpperPipe->runAction(upperPipeMove);
 }
