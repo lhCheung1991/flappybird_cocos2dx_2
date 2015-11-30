@@ -20,6 +20,7 @@ public:
 private:
     
     Sprite * mPipeSprite1;
+    Sprite * mPipeSprite2;
 };
 
 #endif /* PlayScene_hpp */

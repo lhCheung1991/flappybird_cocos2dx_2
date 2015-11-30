@@ -29,8 +29,11 @@ bool PlayScene::init()
     /*******************pipe initialization*************************/
     mPipeSprite1 = PipeSprite::create();
     this->getRootLayer()->addChild(mPipeSprite1);
+    mPipeSprite2 = PipeSprite::create();
+    this->getRootLayer()->addChild(mPipeSprite2);
     /*******************pipe initialization*************************/
     
-    ((PipeSprite *)mPipeSprite1)->startMovement(0);
+    ((PipeSprite *)mPipeSprite1)->startMovement(visiableSize.width);
+    ((PipeSprite *)mPipeSprite2)->startMovement(visiableSize.width + 200);
     return true;
 }

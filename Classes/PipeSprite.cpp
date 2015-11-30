@@ -50,6 +50,8 @@ bool PipeSprite::init()
     return true;
 }
 
+
+
 void PipeSprite::configPipeRandom()
 {
 
@@ -96,10 +98,23 @@ void PipeSprite::configPipeRandom()
     /****************add bottom physics body*******************/
 }
 
+
 void PipeSprite::startMovement(int startX)
 {
     Size visiableSize = Director::getInstance()->getVisibleSize();
-    mUpperPipe->setPosition(visiableSize.width, mUpperPipe->getPosition().y);
+    
+    mUpperPipe->setPosition(startX, mUpperPipe->getPosition().y);
+    MoveTo * upperPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
+    
+    auto upperMoveBack = CallFuncN::create([](Node * node)
+    {
+        Size visiableSize = Director::getInstance()->getVisibleSize();
+        node->setPosition(visiableSize.width, node->getPosition().y);
+    });
     MoveTo * upperPipeMove = MoveTo::create(4, Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
-    mUpperPipe->runAction(upperPipeMove);
+    Sequence * seqRepeat = Sequence::create(upperMoveBack, 0.01, upperPipeMove, NULL);
+    
+    Sequence * seq = Sequence::create(upperPipeMoveFirst, 0.01, Repeat::create(seqRepeat, -1), NULL);
+    mUpperPipe->runAction(seq);
+    
 }
