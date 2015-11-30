@@ -21,6 +21,8 @@ private:
     
     Sprite * mPipeSprite1;
     Sprite * mPipeSprite2;
+    Sprite * mPipeSprite3;
+    Sprite * mPipeSprite4;
 };
 
 #endif /* PlayScene_hpp */

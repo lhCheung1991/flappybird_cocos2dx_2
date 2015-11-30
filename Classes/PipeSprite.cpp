@@ -103,6 +103,7 @@ void PipeSprite::startMovement(int startX)
 {
     Size visiableSize = Director::getInstance()->getVisibleSize();
     
+    /****************add upper pipe movement*******************/
     mUpperPipe->setPosition(startX, mUpperPipe->getPosition().y);
     MoveTo * upperPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
     
@@ -112,9 +113,26 @@ void PipeSprite::startMovement(int startX)
         node->setPosition(visiableSize.width, node->getPosition().y);
     });
     MoveTo * upperPipeMove = MoveTo::create(4, Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
-    Sequence * seqRepeat = Sequence::create(upperMoveBack, 0.01, upperPipeMove, NULL);
+    Sequence * seqRepeatUpper = Sequence::create(upperMoveBack, 0.01, upperPipeMove, NULL);
     
-    Sequence * seq = Sequence::create(upperPipeMoveFirst, 0.01, Repeat::create(seqRepeat, -1), NULL);
-    mUpperPipe->runAction(seq);
+    Sequence * seqUpper = Sequence::create(upperPipeMoveFirst, 0.01, Repeat::create(seqRepeatUpper, -1), NULL);
+    mUpperPipe->runAction(seqUpper);
+    /****************add upper pipe movement*******************/
+    
+    /****************add bottom pipe movement*******************/
+    mBottomPipe->setPosition(startX, mBottomPipe->getPosition().y);
+    MoveTo * bottomPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
+    
+    auto bottomMoveBack = CallFuncN::create([](Node * node)
+    {
+        Size visiableSize = Director::getInstance()->getVisibleSize();
+        node->setPosition(visiableSize.width, node->getPosition().y);
+    });
+    MoveTo * bottomPipeMove = MoveTo::create(4, Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
+    Sequence * seqRepeatBottom = Sequence::create(bottomMoveBack, 0.01, bottomPipeMove, NULL);
+    
+    Sequence * seqBottom = Sequence::create(bottomPipeMoveFirst, 0.01, Repeat::create(seqRepeatBottom, -1), NULL);
+    mBottomPipe->runAction(seqBottom);
+    /****************add bottom pipe movement*******************/
     
 }
