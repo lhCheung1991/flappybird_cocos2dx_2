@@ -18,7 +18,8 @@ bool PipeSprite::init()
     Size visiableSize = Director::getInstance()->getVisibleSize();
     Vec2 visiableOrigin = Director::getInstance()->getVisibleOrigin();
     
-    mPipeAccessHeight = visiableSize.height / 2;    // change to random
+//    mPipeAccessHeight = visiableSize.height / 2;    // change to random
+    mPipeAccessHeight = 400;    // change to random
     
     Sprite * tmpLandSprite = Sprite::create("assets/land.png");
     tmpLandSprite->setAnchorPoint(Vec2(0, 0));
@@ -45,8 +46,8 @@ bool PipeSprite::init()
     // bottomPipeExpand
     Sprite * bottomPipeExpand = Sprite::create("assets/pipe.png");
     bottomPipeExpand->setAnchorPoint(Vec2(0, 0));
-//    bottomPipeExpand->setPosition(0, tmpLandSprite->getContentSize().height);
-    bottomPipeExpand->setScaleY(10);
+    bottomPipeExpand->setPosition(0, -mBottomPipe->getPosition().y + tmpLandSprite->getContentSize().height);
+    bottomPipeExpand->setScaleY((mBottomPipe->getPosition().y - tmpLandSprite->getContentSize().height) / bottomPipeExpand->getContentSize().height);
     mBottomPipe->addChild(bottomPipeExpand);
     /****************bottom pipe*******************/
     
