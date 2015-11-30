@@ -15,10 +15,7 @@ bool PipeSprite::init()
         return false;
     }
     
-    Size visiableSize = Director::getInstance()->getVisibleSize();
     Vec2 visiableOrigin = Director::getInstance()->getVisibleOrigin();
-    
-    mPipeAccessHeight = 200;    // change to random
     
     Sprite * tmpLandSprite = Sprite::create("assets/land.png");
     tmpLandSprite->setAnchorPoint(Vec2(0, 0));
@@ -45,11 +42,7 @@ bool PipeSprite::init()
     mBottomPipe->addChild(bottomPipeExpand);
     /****************bottom pipe*******************/
     
-    /****************add physics body*******************/
-    PhysicsBody * upperPipeBody = PhysicsBody::createBox(Size(mUpperPipe->getContentSize().width,
-                                                              mUpperPipe->getContentSize().height + upperPipeExpand->getContentSize().height));
-    mUpperPipe->setPhysicsBody(upperPipeBody);
-    /****************add physics body*******************/
+    this->configPipeRandom();
     
     this->addChild(mUpperPipe);
     this->addChild(mBottomPipe);
@@ -57,19 +50,51 @@ bool PipeSprite::init()
     return true;
 }
 
-void PipeSprite::buildPipeRandom()
+void PipeSprite::configPipeRandom()
 {
 
     Size visiableSize = Director::getInstance()->getVisibleSize();
     Vec2 visiableOrigin = Director::getInstance()->getVisibleOrigin();
+    mPipeAccessHeight = 300;    // change to random
     
-    // set upper pipe
+    /**********************config upper pipe********************************/
     mUpperPipe->setPosition(Vec2(0, mPipeAccessHeight + 40));
     upperPipeExpand->setPosition(mUpperPipe->getPosition().x, mUpperPipe->getContentSize().height);
     upperPipeExpand->setScaleY((visiableSize.height - mUpperPipe->getPosition().y - mUpperPipe->getContentSize().height) / upperPipeExpand->getContentSize().height);
+    /**********************config upper pipe********************************/
     
-    // set bottom pipe
+    /**********************config bottom pipe********************************/
     mBottomPipe->setPosition(Vec2(0, mPipeAccessHeight - 40));
     bottomPipeExpand->setPosition(0, -mBottomPipe->getPosition().y + mLandHeight);
     bottomPipeExpand->setScaleY((mBottomPipe->getPosition().y - mLandHeight) / bottomPipeExpand->getContentSize().height);
+    /**********************config bottom pipe********************************/
+    
+    /****************add upper physics body*******************/
+    if (mUpperPipe->getPhysicsBody() != nullptr)
+    {
+        mUpperPipe->getPhysicsBody()->removeFromWorld();
+    }
+    PhysicsBody * newUpperPipeBody = PhysicsBody::createBox(Size(mUpperPipe->getContentSize().width,
+                                                              visiableSize.height - mUpperPipe->getPosition().y));
+    newUpperPipeBody->setPositionOffset(Vec2(0, (visiableSize.height - mUpperPipe->getPosition().y - mUpperPipe->getContentSize().height) / 2));
+    newUpperPipeBody->setGravityEnable(false);
+    mUpperPipe->setPhysicsBody(newUpperPipeBody);
+    /****************add upper physics body*******************/
+    
+    /****************add bottom physics body*******************/
+    if (mBottomPipe->getPhysicsBody() != nullptr)
+    {
+        mBottomPipe->getPhysicsBody()->removeFromWorld();
+    }
+    PhysicsBody * newBottomPipeBody = PhysicsBody::createBox(Size(mBottomPipe->getContentSize().width,
+                                                                  mBottomPipe->getPosition().y - mLandHeight + mBottomPipe->getContentSize().height));
+    newBottomPipeBody->setPositionOffset(Vec2(0, -(mBottomPipe->getPosition().y - mLandHeight) / 2));
+    newBottomPipeBody->setGravityEnable(false);
+    mBottomPipe->setPhysicsBody(newBottomPipeBody);
+    /****************add bottom physics body*******************/
+}
+
+void PipeSprite::startMovement(int startX)
+{
+    
 }

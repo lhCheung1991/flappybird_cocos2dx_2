@@ -19,9 +19,8 @@ public:
     bool init();
     CREATE_FUNC(PipeSprite);
     
-    void setPipeAccessHeight(int height){mPipeAccessHeight = height;}
-    
-    void buildPipeRandom();
+    void configPipeRandom();
+    void startMovement(int startX);
     
 private:
     
