@@ -28,6 +28,7 @@ bool PlayScene::init()
     
     /*******************pipe initialization*************************/
     mPipeSprite1 = PipeSprite::create();
+    ((PipeSprite *)mPipeSprite1)->buildPipeRandom();
     this->getRootLayer()->addChild(mPipeSprite1);
     /*******************pipe initialization*************************/
     return true;

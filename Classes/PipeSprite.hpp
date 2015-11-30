@@ -19,12 +19,19 @@ public:
     bool init();
     CREATE_FUNC(PipeSprite);
     
+    void setPipeAccessHeight(int height){mPipeAccessHeight = height;}
+    
+    void buildPipeRandom();
+    
 private:
     
     Sprite * mUpperPipe;
+    Sprite * upperPipeExpand;
     Sprite * mBottomPipe;
+    Sprite * bottomPipeExpand;
     
     int mPipeAccessHeight;
+    int mLandHeight;
     
 };
 
