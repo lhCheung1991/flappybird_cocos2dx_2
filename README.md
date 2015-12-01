@@ -12,4 +12,4 @@ A flappybird based on cocos2d-x with physics features. Cocos2d-x is such a marve
 
 # UML 
 
-I have finishED most of work but not completely. Personally, I think these code is not a bad study material for the "freshman" to Game Developing, so I will rearrange the UML of my design ASAP.
+I have finished most of work but not completely. Personally, I think these code is not a bad study material for the "freshman" to Game Developing, so I will rearrange the UML of my design ASAP.
