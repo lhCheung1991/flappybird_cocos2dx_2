@@ -24,12 +24,12 @@ bool BirdSprite::init()
     birdAnimFrames.pushBack(SpriteFrame::create("assets/bird.png",
                                                 Rect(0, 0, birdFrameWidth, birdFrameHeight)));
     birdAnimFrames.pushBack(SpriteFrame::create("assets/bird.png",
-                                                Rect(0, birdFrameHeight + 1, birdFrameWidth, birdFrameHeight)));
+                                                Rect(0, birdFrameHeight + 2, birdFrameWidth, birdFrameHeight)));
     birdAnimFrames.pushBack(SpriteFrame::create("assets/bird.png",
-                                                Rect(0, birdFrameHeight * 2 + 1, birdFrameWidth, birdFrameHeight)));
+                                                Rect(0, birdFrameHeight * 2 + 2, birdFrameWidth, birdFrameHeight)));
     birdAnimFrames.pushBack(SpriteFrame::create("assets/bird.png",
-                                                Rect(0, birdFrameHeight * 3 + 1, birdFrameWidth, birdFrameHeight)));
-    Animation * birdAnimation = Animation::createWithSpriteFrames(birdAnimFrames, 0.1);
+                                                Rect(0, birdFrameHeight * 3 + 2, birdFrameWidth, birdFrameHeight)));
+    Animation * birdAnimation = Animation::createWithSpriteFrames(birdAnimFrames, 0.1f);
     Animate * birdAnimate = Animate::create(birdAnimation);
     /******************create bird animation***************************/
     
