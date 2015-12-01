@@ -58,7 +58,7 @@ void BirdSprite::flyUp()
     setVelocity(Vec2(0, 20 * 9.8));
     
     RotateTo * rotACW = RotateTo::create(0.05, -25);
-    RotateTo * rotCW = RotateTo::create(0.7, 60);
+    RotateTo * rotCW = RotateTo::create(0.9, 60);
     Sequence * seq = Sequence::create(rotACW, 0.01, rotCW, NULL);
     this->runAction(seq);
 }
