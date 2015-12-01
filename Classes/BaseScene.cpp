@@ -9,6 +9,7 @@
 #include "BaseScene.hpp"
 #include "LandSprite.hpp"
 #include "BirdSprite.hpp"
+#include "SkySprite.hpp"
 
 bool BaseScene::init()
 {
@@ -22,6 +23,9 @@ bool BaseScene::init()
     
     mRootLayer = Layer::create();
     this->addChild(mRootLayer);
+    
+    mSkySprite = SkySprite::create();
+    mRootLayer->addChild(mSkySprite);
     
     mLandSprite = LandSprite::create();
     mRootLayer->addChild(mLandSprite);

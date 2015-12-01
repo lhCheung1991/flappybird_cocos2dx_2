@@ -59,6 +59,8 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5625CFEA1C0AEEA4009A772D /* PipeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5625CFE81C0AEEA4009A772D /* PipeSprite.cpp */; };
 		5625CFEB1C0AEEA4009A772D /* PipeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5625CFE81C0AEEA4009A772D /* PipeSprite.cpp */; };
+		56657B6F1C0D728F00467D09 /* SkySprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56657B6D1C0D728F00467D09 /* SkySprite.cpp */; };
+		56657B701C0D728F00467D09 /* SkySprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56657B6D1C0D728F00467D09 /* SkySprite.cpp */; };
 		56B32AB61C0B49560043FB33 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 56DAE2DC1C09931000920AFE /* assets */; };
 		56DAE2DE1C0993F600920AFE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 56DAE2DC1C09931000920AFE /* assets */; };
 		56DAE2E11C0995DB00920AFE /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56DAE2DF1C0995DB00920AFE /* Game.cpp */; };
@@ -167,6 +169,8 @@
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5625CFE81C0AEEA4009A772D /* PipeSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PipeSprite.cpp; sourceTree = "<group>"; };
 		5625CFE91C0AEEA4009A772D /* PipeSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PipeSprite.hpp; sourceTree = "<group>"; };
+		56657B6D1C0D728F00467D09 /* SkySprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkySprite.cpp; sourceTree = "<group>"; };
+		56657B6E1C0D728F00467D09 /* SkySprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SkySprite.hpp; sourceTree = "<group>"; };
 		56DAE2DC1C09931000920AFE /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		56DAE2DF1C0995DB00920AFE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		56DAE2E01C0995DB00920AFE /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 				56DAE2F41C09A99A00920AFE /* BirdSprite.hpp */,
 				5625CFE81C0AEEA4009A772D /* PipeSprite.cpp */,
 				5625CFE91C0AEEA4009A772D /* PipeSprite.hpp */,
+				56657B6D1C0D728F00467D09 /* SkySprite.cpp */,
+				56657B6E1C0D728F00467D09 /* SkySprite.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -544,6 +550,7 @@
 				56DAE2ED1C099DFA00920AFE /* StartScene.cpp in Sources */,
 				56DAE2F51C09A99A00920AFE /* BirdSprite.cpp in Sources */,
 				56DAE2E51C0996EB00920AFE /* BaseScene.cpp in Sources */,
+				56657B6F1C0D728F00467D09 /* SkySprite.cpp in Sources */,
 				56DAE2E91C09985100920AFE /* LandSprite.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				56DAE2E11C0995DB00920AFE /* Game.cpp in Sources */,
@@ -554,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56657B701C0D728F00467D09 /* SkySprite.cpp in Sources */,
 				56DAE2E21C0995DB00920AFE /* Game.cpp in Sources */,
 				56DAE2EA1C09985100920AFE /* LandSprite.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,

@@ -24,6 +24,7 @@ public:
 protected:
     Sprite * mLandSprite;
     Sprite * mBirdSprite;
+    Sprite * mSkySprite;
 
 private:
     Layer * mRootLayer;    // BaseScene get a root layer to hold everything in the scene
