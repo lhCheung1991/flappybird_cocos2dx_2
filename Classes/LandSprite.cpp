@@ -44,7 +44,7 @@ bool LandSprite::init()
     landAnimNode->addChild(landSprite3);
     landAnimNode->addChild(landSprite4);
     
-    MoveBy * landForward = MoveBy::create(4, Vec2(-visiableSize.width, 0));
+    MoveBy * landForward = MoveBy::create(5, Vec2(-visiableSize.width, 0));
     MoveBy * landBackward = MoveBy::create(0.001, Vec2(visiableSize.width, 0));
     Sequence * moveSeq = Sequence::create(landForward, 0.001, landBackward,NULL);
     landSprite1->runAction(RepeatForever::create(moveSeq));

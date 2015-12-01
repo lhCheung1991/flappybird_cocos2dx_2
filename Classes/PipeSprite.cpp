@@ -65,13 +65,13 @@ void PipeSprite::configPipeRandom()
     Vec2 visiableOrigin = Director::getInstance()->getVisibleOrigin();
     
     /**********************config upper pipe********************************/
-    mUpperPipe->setPosition(Vec2(0, mPipeAccessHeight + 40));
+    mUpperPipe->setPosition(Vec2(0, mPipeAccessHeight + 60));
     upperPipeExpand->setPosition(mUpperPipe->getPosition().x, mUpperPipe->getContentSize().height);
     upperPipeExpand->setScaleY((visiableSize.height - mUpperPipe->getPosition().y - mUpperPipe->getContentSize().height) / upperPipeExpand->getContentSize().height);
     /**********************config upper pipe********************************/
     
     /**********************config bottom pipe********************************/
-    mBottomPipe->setPosition(Vec2(0, mPipeAccessHeight - 40));
+    mBottomPipe->setPosition(Vec2(0, mPipeAccessHeight - 60));
     bottomPipeExpand->setPosition(0, -mBottomPipe->getPosition().y + mLandHeight);
     bottomPipeExpand->setScaleY((mBottomPipe->getPosition().y - mLandHeight) / bottomPipeExpand->getContentSize().height);
     /**********************config bottom pipe********************************/
@@ -110,7 +110,7 @@ void PipeSprite::startMovement(int startX)
     
     /****************add upper pipe movement*******************/
     mUpperPipe->setPosition(startX, mUpperPipe->getPosition().y);
-    MoveTo * upperPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
+    MoveTo * upperPipeMoveFirst = MoveTo::create(5.3 * (startX / visiableSize.width), Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
     
     CallFuncN * upperMoveRemove = CallFuncN::create([](Node * node)
     {
@@ -124,7 +124,7 @@ void PipeSprite::startMovement(int startX)
     
     /****************add bottom pipe movement*******************/
     mBottomPipe->setPosition(startX, mBottomPipe->getPosition().y);
-    MoveTo * BottomPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
+    MoveTo * BottomPipeMoveFirst = MoveTo::create(5.3 * (startX / visiableSize.width), Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
     
     mBottomPipe->runAction(BottomPipeMoveFirst);
     /****************add bottom pipe movement*******************/
