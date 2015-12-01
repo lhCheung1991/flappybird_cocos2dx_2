@@ -42,8 +42,6 @@ bool BirdSprite::init()
     this->setScale(2);
     this->setContentSize(Size(birdFrameWidth, birdFrameHeight));
     
-    this->registerEventListener();
-    
     return true;
 }
 

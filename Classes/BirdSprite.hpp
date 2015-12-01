@@ -21,9 +21,9 @@ public:
     
     void flyUp();
     void initPhysicsFeature();
-    
-private:
     void registerEventListener();
+private:
+    
     bool onContactBegin(PhysicsContact & contact);
 };
 
