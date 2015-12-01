@@ -24,11 +24,12 @@ Game::~Game()
 void Game::initGame()
 {
     mStartScene = StartScene::create();
+    mStartScene->setGame(this);
     mPlayScene = PlayScene::create();
+    mPlayScene->setGame(this);
 }
 
 void Game::runGame()
 {
     Director::getInstance()->runWithScene(mStartScene);
-//    Director::getInstance()->runWithScene(mPlayScene);
 }

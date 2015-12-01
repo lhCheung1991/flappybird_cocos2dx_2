@@ -49,7 +49,7 @@ bool SkySprite::init()
     skyTop->setScaleX(visibleSize.width / skyTop->getContentSize().width);
     skyTop->setScaleY(100);
     
-    auto moveForwardAction = MoveBy::create(10, Vec2(-visibleSize.width, 0));
+    auto moveForwardAction = MoveBy::create(12, Vec2(-visibleSize.width, 0));
     auto moveBackAction = MoveBy::create(0, Vec2(visibleSize.width, 0));
     
     auto seq = Sequence::create(moveForwardAction, 0.001, moveBackAction, NULL);

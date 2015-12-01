@@ -9,6 +9,10 @@
 #ifndef Game_hpp
 #define Game_hpp
 
+#include "cocos2d.h"
+
+USING_NS_CC;
+
 class BaseScene;
 
 class Game
@@ -23,6 +27,9 @@ public:
     
     void initGame();
     void runGame();
+    
+    BaseScene * getStartScene(){return mStartScene;}
+    BaseScene * getPlayScene(){return mPlayScene;}
     
 private:
     

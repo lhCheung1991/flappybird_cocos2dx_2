@@ -16,10 +16,14 @@ class StartScene : public BaseScene
 public:
     bool init();
     CREATE_FUNC(StartScene);
-  
+
+private:
+    void goToPlaySceneCallback(Ref* pSender);
+    
 private:
     Label * mGameLabel;
     Sprite * mBirdSprite;
+    MenuItem * mGoToPlaySceneItem;
 };
 
 #endif /* StartScene_hpp */

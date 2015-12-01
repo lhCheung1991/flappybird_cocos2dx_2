@@ -9,6 +9,8 @@
 #include "StartScene.hpp"
 #include "BirdSprite.hpp"
 
+#include "Game.hpp"
+
 bool StartScene::init()
 {
     if (!BaseScene::init())
@@ -28,9 +30,26 @@ bool StartScene::init()
     /*************initialize the BirdSprite****************/
     mBirdSprite = BirdSprite::create();
     mBirdSprite->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5 + 80));
-//    mBirdSprite->flyShaking();
     this->getRootLayer()->addChild(mBirdSprite);
     /*************initialize the BirdSprite****************/
     
+    /*************initialize the menu item****************/
+    mGoToPlaySceneItem =  MenuItemImage::create(
+                          "assets/replay.png",
+                          "assets/replay.png",
+                          CC_CALLBACK_1(StartScene::goToPlaySceneCallback, this));
+    mGoToPlaySceneItem->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5 - 80));
+    
+    auto menu = Menu::create(mGoToPlaySceneItem, NULL);
+    menu->setPosition(Vec2::ZERO);
+    menu->setScale(1.5);
+    this->getRootLayer()->addChild(menu);
+    /*************initialize the menu item****************/
+    
     return true;
+}
+
+void StartScene::goToPlaySceneCallback(Ref *pSender)
+{
+    Director::getInstance()->replaceScene(((StartScene*)pSender)->getGame()->getPlayScene());
 }
