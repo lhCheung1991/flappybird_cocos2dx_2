@@ -42,12 +42,6 @@ bool BirdSprite::init()
     this->setScale(2);
     this->setContentSize(Size(birdFrameWidth, birdFrameHeight));
     
-    PhysicsBody * birdPhysicsBody = PhysicsBody::createBox(Size(birdFrameWidth, birdFrameHeight),
-                                                           PhysicsMaterial(1, 0.5, 0.5));
-    birdPhysicsBody->setRotationEnable(false);
-    birdPhysicsBody->setCollisionBitmask(1);
-    birdPhysicsBody->setContactTestBitmask(1);
-    this->setPhysicsBody(birdPhysicsBody);
     this->registerEventListener();
     
     return true;
@@ -63,6 +57,21 @@ void BirdSprite::flyUp()
     RotateTo * rotCW = RotateTo::create(0.9, 60);
     Sequence * seq = Sequence::create(rotACW, 0.01, rotCW, NULL);
     this->runAction(seq);
+}
+
+
+void BirdSprite::initPhysicsFeature()
+{
+    Sprite * tmpBirdSprite = Sprite::create("assets/bird.png");
+    int birdFrameWidth = tmpBirdSprite->getContentSize().width;
+    int birdFrameHeight = tmpBirdSprite->getContentSize().height / 4;
+    
+    PhysicsBody * birdPhysicsBody = PhysicsBody::createBox(Size(birdFrameWidth, birdFrameHeight),
+                                                           PhysicsMaterial(1, 0.5, 0.5));
+    birdPhysicsBody->setRotationEnable(false);
+    birdPhysicsBody->setCollisionBitmask(1);
+    birdPhysicsBody->setContactTestBitmask(1);
+    this->setPhysicsBody(birdPhysicsBody);
 }
 
 void BirdSprite::registerEventListener()

@@ -20,6 +20,7 @@ public:
     CREATE_FUNC(BirdSprite);
     
     void flyUp();
+    void initPhysicsFeature();
     
 private:
     void registerEventListener();

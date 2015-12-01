@@ -30,8 +30,5 @@ bool BaseScene::init()
     mLandSprite = LandSprite::create();
     mRootLayer->addChild(mLandSprite);
     
-    mBirdSprite = BirdSprite::create();
-    mRootLayer->addChild(mBirdSprite);
-    
     return true;
 }

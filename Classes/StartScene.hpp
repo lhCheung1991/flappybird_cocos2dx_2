@@ -18,7 +18,8 @@ public:
     CREATE_FUNC(StartScene);
   
 private:
-    Label * gameLabel;
+    Label * mGameLabel;
+    Sprite * mBirdSprite;
 };
 
 #endif /* StartScene_hpp */

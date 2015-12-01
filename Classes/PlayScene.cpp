@@ -8,7 +8,9 @@
 
 #include "PlayScene.hpp"
 
+#include "BirdSprite.hpp"
 #include "PipeSprite.hpp"
+
 
 bool PlayScene::init()
 {
@@ -22,6 +24,8 @@ bool PlayScene::init()
     
     
     /*******************bird initialization*************************/
+    mBirdSprite = BirdSprite::create();
+    ((BirdSprite * )mBirdSprite)->initPhysicsFeature();
     mBirdSprite->setPosition(Vec2(visiableOrigin.x + visiableSize.width * 0.2,
                                   visiableOrigin.y + visiableSize.height * 0.5));
     /*******************bird initialization*************************/

@@ -7,7 +7,7 @@
 //
 
 #include "StartScene.hpp"
-
+#include "BirdSprite.hpp"
 
 bool StartScene::init()
 {
@@ -19,11 +19,18 @@ bool StartScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     
     /*************initialize the game label****************/
-    gameLabel = Label::createWithTTF("Flappy Bird", "fonts/Marker_Felt.ttf", 35);
-    gameLabel->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5));
-    gameLabel->enableOutline(Color4B::BLACK, 2);
-    this->getRootLayer()->addChild(gameLabel);
+    mGameLabel = Label::createWithTTF("Flappy Bird", "fonts/Marker_Felt.ttf", 35);
+    mGameLabel->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5));
+    mGameLabel->enableOutline(Color4B::BLACK, 2);
+    this->getRootLayer()->addChild(mGameLabel);
     /*************initialize the game label****************/
+    
+    /*************initialize the BirdSprite****************/
+    mBirdSprite = BirdSprite::create();
+    mBirdSprite->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5 + 80));
+//    mBirdSprite->flyShaking();
+    this->getRootLayer()->addChild(mBirdSprite);
+    /*************initialize the BirdSprite****************/
     
     return true;
 }

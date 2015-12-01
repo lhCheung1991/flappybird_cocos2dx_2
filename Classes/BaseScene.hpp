@@ -23,7 +23,6 @@ public:
     
 protected:
     Sprite * mLandSprite;
-    Sprite * mBirdSprite;
     Sprite * mSkySprite;
 
 private:
