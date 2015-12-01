@@ -29,6 +29,6 @@ void Game::initGame()
 
 void Game::runGame()
 {
-//    Director::getInstance()->runWithScene(mStartScene);
-    Director::getInstance()->runWithScene(mPlayScene);
+    Director::getInstance()->runWithScene(mStartScene);
+//    Director::getInstance()->runWithScene(mPlayScene);
 }

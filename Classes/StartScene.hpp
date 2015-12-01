@@ -16,7 +16,9 @@ class StartScene : public BaseScene
 public:
     bool init();
     CREATE_FUNC(StartScene);
-    
+  
+private:
+    Label * gameLabel;
 };
 
 #endif /* StartScene_hpp */
