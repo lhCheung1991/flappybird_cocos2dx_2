@@ -51,7 +51,6 @@ bool StartScene::init()
 
 void StartScene::goToPlaySceneCallback(Ref *pSender)
 {
-//    ((StartScene *)((MenuItemImage *)pSender)->getScene())->getGame()->goToPlayScene();
     StartScene * scene = (StartScene *)((MenuItemImage *)pSender)->getScene();
-//    scene->getGame()->goToPlayScene();
+    scene->getGame()->goToPlayScene(pSender);
 }

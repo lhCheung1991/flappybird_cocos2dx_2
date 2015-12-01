@@ -8,7 +8,6 @@
 
 #include "BirdSprite.hpp"
 
-
 bool BirdSprite::init()
 {
     if (!Sprite::init())

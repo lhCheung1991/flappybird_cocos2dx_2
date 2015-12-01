@@ -23,21 +23,21 @@ Game::~Game()
 
 void Game::initGame()
 {
-    mPlayScene = PlayScene::create();
-    mPlayScene->setGame(this);
     mStartScene = StartScene::create();
     mStartScene->setGame(this);
-    
 }
 
 void Game::runGame()
 {
     Director::getInstance()->runWithScene(mStartScene);
-//    Director::getInstance()->runWithScene(mPlayScene);
 }
 
 void Game::goToPlayScene(Ref * ref)
 {
     Director::getInstance()->pushScene(mStartScene);
+
+    mPlayScene = PlayScene::create();
+    mPlayScene->setGame(this);
+    
     Director::getInstance()->replaceScene(mPlayScene);
 }

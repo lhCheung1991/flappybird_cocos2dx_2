@@ -10,10 +10,9 @@
 #define Game_hpp
 
 #include "cocos2d.h"
+#include "BaseScene.hpp"
 
 USING_NS_CC;
-
-class BaseScene;
 
 class Game
 {
