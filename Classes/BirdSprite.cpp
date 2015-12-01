@@ -45,6 +45,8 @@ bool BirdSprite::init()
     PhysicsBody * birdPhysicsBody = PhysicsBody::createBox(Size(birdFrameWidth, birdFrameHeight),
                                                            PhysicsMaterial(1, 0.5, 0.5));
     birdPhysicsBody->setRotationEnable(false);
+    birdPhysicsBody->setCollisionBitmask(1);
+    birdPhysicsBody->setContactTestBitmask(1);
     this->setPhysicsBody(birdPhysicsBody);
     this->registerEventListener();
     
@@ -74,6 +76,16 @@ void BirdSprite::registerEventListener()
         }
         
     };
-    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+    
+    EventListenerPhysicsContact * contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin =  CC_CALLBACK_1(BirdSprite::onContactBegin, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
+}
+
+
+bool BirdSprite::onContactBegin(PhysicsContact &contact)
+{
+    CCLOG("!");
+    return true;
 }

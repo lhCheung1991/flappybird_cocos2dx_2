@@ -59,6 +59,8 @@ bool LandSprite::init()
     PhysicsBody * landPhysicsBody = PhysicsBody::createBox(Size(visiableSize.width, landSprite1->getContentSize().height), PhysicsMaterial(1, 1, 0));
     landPhysicsBody->setGravityEnable(false);
     landPhysicsBody->setDynamic(false);
+    landPhysicsBody->setContactTestBitmask(1);
+    landPhysicsBody->setCollisionBitmask(2);
     this->setPhysicsBody(landPhysicsBody);
     
     

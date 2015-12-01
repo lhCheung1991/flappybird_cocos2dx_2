@@ -23,7 +23,7 @@ public:
     
 private:
     void registerEventListener();
-    
+    bool onContactBegin(PhysicsContact & contact);
 };
 
 #endif /* BirdSprite_hpp */
