@@ -21,6 +21,9 @@ public:
     
     void configPipeRandom();
     void startMovement(int startX);
+
+private:
+    int getRandomAccessHeight();
     
 private:
     

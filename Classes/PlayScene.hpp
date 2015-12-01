@@ -17,6 +17,8 @@ public:
     bool init();
     CREATE_FUNC(PlayScene);
     
+    void updatePipe();
+    
 private:
     
     Sprite * mPipeSprite1;

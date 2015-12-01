@@ -8,6 +8,10 @@
 
 #include "PipeSprite.hpp"
 
+#include <time.h>
+#include <stdlib.h>
+#include "PlayScene.hpp"
+
 bool PipeSprite::init()
 {
     if (!Sprite::init())
@@ -21,6 +25,8 @@ bool PipeSprite::init()
     tmpLandSprite->setAnchorPoint(Vec2(0, 0));
     tmpLandSprite->setPosition(Vec2(visiableOrigin.x, visiableOrigin.y));
     mLandHeight = tmpLandSprite->getContentSize().height;
+    
+    mPipeAccessHeight = getRandomAccessHeight();
     
     /****************upper pipe*******************/
     mUpperPipe = Sprite::create("assets/pipe_down.png");
@@ -57,7 +63,6 @@ void PipeSprite::configPipeRandom()
 
     Size visiableSize = Director::getInstance()->getVisibleSize();
     Vec2 visiableOrigin = Director::getInstance()->getVisibleOrigin();
-    mPipeAccessHeight = 300;    // change to random
     
     /**********************config upper pipe********************************/
     mUpperPipe->setPosition(Vec2(0, mPipeAccessHeight + 40));
@@ -74,7 +79,7 @@ void PipeSprite::configPipeRandom()
     /****************add upper physics body*******************/
     if (mUpperPipe->getPhysicsBody() != nullptr)
     {
-        mUpperPipe->getPhysicsBody()->removeFromWorld();
+        mUpperPipe->removeComponent(mUpperPipe->getPhysicsBody());
     }
     PhysicsBody * newUpperPipeBody = PhysicsBody::createBox(Size(mUpperPipe->getContentSize().width,
                                                               visiableSize.height - mUpperPipe->getPosition().y));
@@ -87,7 +92,7 @@ void PipeSprite::configPipeRandom()
     /****************add bottom physics body*******************/
     if (mBottomPipe->getPhysicsBody() != nullptr)
     {
-        mBottomPipe->getPhysicsBody()->removeFromWorld();
+        mBottomPipe->removeComponent(mBottomPipe->getPhysicsBody());
     }
     PhysicsBody * newBottomPipeBody = PhysicsBody::createBox(Size(mBottomPipe->getContentSize().width,
                                                                   mBottomPipe->getPosition().y - mLandHeight + mBottomPipe->getContentSize().height));
@@ -107,32 +112,29 @@ void PipeSprite::startMovement(int startX)
     mUpperPipe->setPosition(startX, mUpperPipe->getPosition().y);
     MoveTo * upperPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
     
-    auto upperMoveBack = CallFuncN::create([](Node * node)
+    CallFuncN * upperMoveRemove = CallFuncN::create([](Node * node)
     {
-        Size visiableSize = Director::getInstance()->getVisibleSize();
-        node->setPosition(visiableSize.width, node->getPosition().y);
+        ((PlayScene *)node->getScene())->updatePipe();
+        node->getParent()->removeFromParentAndCleanup(true);
     });
-    MoveTo * upperPipeMove = MoveTo::create(4, Vec2(-mUpperPipe->getContentSize().width * 1.5, mUpperPipe->getPosition().y));
-    Sequence * seqRepeatUpper = Sequence::create(upperMoveBack, 0.01, upperPipeMove, NULL);
     
-    Sequence * seqUpper = Sequence::create(upperPipeMoveFirst, 0.01, Repeat::create(seqRepeatUpper, -1), NULL);
+    Sequence * seqUpper = Sequence::create(upperPipeMoveFirst, DelayTime::create(0.1), upperMoveRemove , NULL);
     mUpperPipe->runAction(seqUpper);
     /****************add upper pipe movement*******************/
     
     /****************add bottom pipe movement*******************/
     mBottomPipe->setPosition(startX, mBottomPipe->getPosition().y);
-    MoveTo * bottomPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
+    MoveTo * BottomPipeMoveFirst = MoveTo::create(4 * (startX / visiableSize.width), Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
     
-    auto bottomMoveBack = CallFuncN::create([](Node * node)
-    {
-        Size visiableSize = Director::getInstance()->getVisibleSize();
-        node->setPosition(visiableSize.width, node->getPosition().y);
-    });
-    MoveTo * bottomPipeMove = MoveTo::create(4, Vec2(-mBottomPipe->getContentSize().width * 1.5, mBottomPipe->getPosition().y));
-    Sequence * seqRepeatBottom = Sequence::create(bottomMoveBack, 0.01, bottomPipeMove, NULL);
-    
-    Sequence * seqBottom = Sequence::create(bottomPipeMoveFirst, 0.01, Repeat::create(seqRepeatBottom, -1), NULL);
-    mBottomPipe->runAction(seqBottom);
+    mBottomPipe->runAction(BottomPipeMoveFirst);
     /****************add bottom pipe movement*******************/
-    
+}
+
+
+int PipeSprite::getRandomAccessHeight()
+{
+    time_t curTime;
+    time(&curTime);
+    srand((unsigned int)curTime);
+    return random(200, 400);
 }

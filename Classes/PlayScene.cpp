@@ -43,3 +43,12 @@ bool PlayScene::init()
     ((PipeSprite *)mPipeSprite4)->startMovement(visiableSize.width + visiableSize.width * 0.75);
     return true;
 }
+
+void PlayScene::updatePipe()
+{
+    Size visiableSize = Director::getInstance()->getVisibleSize();
+    
+    PipeSprite * curPipeSprite = PipeSprite::create();
+    this->getRootLayer()->addChild(curPipeSprite);
+    curPipeSprite->startMovement(visiableSize.width);
+}
