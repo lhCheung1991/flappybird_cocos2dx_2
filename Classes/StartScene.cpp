@@ -29,7 +29,7 @@ bool StartScene::init()
     
     /*************initialize the BirdSprite****************/
     mBirdSprite = BirdSprite::create();
-    mBirdSprite->setPosition(Vec2(visibleSize.width * 0.5, visibleSize.height * 0.5 + 80));
+    mBirdSprite->setPosition(Vec2(visibleSize.width * 0.5 - 20, visibleSize.height * 0.5 + 80));
     this->getRootLayer()->addChild(mBirdSprite);
     /*************initialize the BirdSprite****************/
     
@@ -42,7 +42,6 @@ bool StartScene::init()
     
     auto menu = Menu::create(mGoToPlaySceneItem, NULL);
     menu->setPosition(Vec2::ZERO);
-    menu->setScale(1.5);
     this->getRootLayer()->addChild(menu);
     /*************initialize the menu item****************/
     
