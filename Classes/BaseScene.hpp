@@ -10,10 +10,8 @@
 #define BaseScene_hpp
 
 #include "cocos2d.h"
-
+#include "Game.hpp"
 USING_NS_CC;
-
-class Game;
 
 class BaseScene : public Scene
 {
@@ -23,7 +21,7 @@ public:
     CREATE_FUNC(BaseScene);
     Layer * getRootLayer(){return mRootLayer;}
     
-    Game * getGame(){return mGame;}
+    Game * getGame() const {return mGame;}
     void setGame(Game * game){mGame = game;}
     
 protected:

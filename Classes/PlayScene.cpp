@@ -26,8 +26,11 @@ bool PlayScene::init()
     /*******************bird initialization*************************/
     mBirdSprite = BirdSprite::create();
     ((BirdSprite * )mBirdSprite)->initPhysicsFeature();
+    ((BirdSprite * )mBirdSprite)->registerEventListener();
     mBirdSprite->setPosition(Vec2(visiableOrigin.x + visiableSize.width * 0.2,
                                   visiableOrigin.y + visiableSize.height * 0.5));
+
+    this->getRootLayer()->addChild(mBirdSprite);
     /*******************bird initialization*************************/
     
     /*******************pipe initialization*************************/

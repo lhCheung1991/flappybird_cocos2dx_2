@@ -27,6 +27,7 @@ public:
     
     void initGame();
     void runGame();
+    void goToPlayScene(Ref * ref);
     
     BaseScene * getStartScene(){return mStartScene;}
     BaseScene * getPlayScene(){return mPlayScene;}

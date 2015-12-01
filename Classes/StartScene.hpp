@@ -23,7 +23,7 @@ private:
 private:
     Label * mGameLabel;
     Sprite * mBirdSprite;
-    MenuItem * mGoToPlaySceneItem;
+    MenuItemImage * mGoToPlaySceneItem;
 };
 
 #endif /* StartScene_hpp */
