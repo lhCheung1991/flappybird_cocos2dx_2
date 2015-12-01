@@ -89,9 +89,8 @@ void BirdSprite::registerEventListener()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
-
 bool BirdSprite::onContactBegin(PhysicsContact &contact)
 {
-    CCLOG("!");
+    this->getPhysicsBody()->setVelocity(Vec2(1000, 1000));
     return true;
 }

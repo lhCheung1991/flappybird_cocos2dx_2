@@ -39,5 +39,5 @@ void Game::goToPlayScene(Ref * ref)
     mPlayScene = PlayScene::create();
     mPlayScene->setGame(this);
     
-    Director::getInstance()->replaceScene(mPlayScene);
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5, mPlayScene, Color3B(0, 255, 255)));
 }

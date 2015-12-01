@@ -18,7 +18,7 @@ bool BaseScene::init()
         return false;
     }
     
-    Scene::getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+//    Scene::getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     Scene::getPhysicsWorld()->setGravity(Vec2(0, -9.8f * 50));
     
     mRootLayer = Layer::create();

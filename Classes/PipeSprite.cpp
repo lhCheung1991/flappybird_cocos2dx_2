@@ -82,10 +82,13 @@ void PipeSprite::configPipeRandom()
         mUpperPipe->removeComponent(mUpperPipe->getPhysicsBody());
     }
     PhysicsBody * newUpperPipeBody = PhysicsBody::createBox(Size(mUpperPipe->getContentSize().width,
-                                                              visiableSize.height - mUpperPipe->getPosition().y));
+                                                              visiableSize.height - mUpperPipe->getPosition().y),
+                                                            PhysicsMaterial(1.0, 1.0, 0));
     newUpperPipeBody->setPositionOffset(Vec2(0, (visiableSize.height - mUpperPipe->getPosition().y - mUpperPipe->getContentSize().height) / 2));
     newUpperPipeBody->setGravityEnable(false);
     newUpperPipeBody->setDynamic(false);
+    newUpperPipeBody->setContactTestBitmask(1);
+    newUpperPipeBody->setCollisionBitmask(2);
     mUpperPipe->setPhysicsBody(newUpperPipeBody);
     /****************add upper physics body*******************/
     
@@ -95,10 +98,13 @@ void PipeSprite::configPipeRandom()
         mBottomPipe->removeComponent(mBottomPipe->getPhysicsBody());
     }
     PhysicsBody * newBottomPipeBody = PhysicsBody::createBox(Size(mBottomPipe->getContentSize().width,
-                                                                  mBottomPipe->getPosition().y - mLandHeight + mBottomPipe->getContentSize().height));
+                                                                  mBottomPipe->getPosition().y - mLandHeight + mBottomPipe->getContentSize().height),
+                                                             PhysicsMaterial(1.0, 1.0, 0));
     newBottomPipeBody->setPositionOffset(Vec2(0, -(mBottomPipe->getPosition().y - mLandHeight) / 2));
     newBottomPipeBody->setGravityEnable(false);
     newBottomPipeBody->setDynamic(false);
+    newBottomPipeBody->setContactTestBitmask(1);
+    newBottomPipeBody->setCollisionBitmask(2);
     mBottomPipe->setPhysicsBody(newBottomPipeBody);
     /****************add bottom physics body*******************/
 }
