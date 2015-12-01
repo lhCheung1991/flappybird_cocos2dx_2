@@ -34,7 +34,6 @@ bool BirdSprite::init()
     /******************create bird animation***************************/
     
     Sprite * birdAnimNode = Sprite::create();    // node hold the bird animation
-    birdAnimNode->setAnchorPoint(Vec2(0, 0));
     birdAnimNode->runAction(RepeatForever::create(birdAnimate));
     
     this->addChild(birdAnimNode);
